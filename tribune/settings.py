@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'bootstrap3',
+    'bootstrap4',
     'news.apps.NewsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
