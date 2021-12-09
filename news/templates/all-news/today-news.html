@@ -1,28 +1,28 @@
 {%extends 'all-news/base.html'%}
 {% load bootstrap4 %}
+{% load static %}
 {% block content %}
 {{ block.super}}
 
-<br><br><br>
-<br><br><br>
-{% for news_item in news %}
+
 
 <div class="container">
-
+  {% for news_item in news %}
+  <div class="row">
   <!-- Looping through news   -->
 
-  <div class="row">
+  
 
     <!-- displaying News articles -->
-    <div class="col-xs-6 col-sm-6">
+    <div class="col-md-6">
       <a href="{% url 'article' news_item.id %} ">
         <h2 class="text-center"> {{ news_item.title }} </h2>
       </a>
-      <p class="text-center">{{news_item.post|truncatechars:200}} </p>
+      <p class="text-center"> {{news_item.post|truncatechars:200|safe}} </p>
     </div>
 
     <!--Display news Article images  -->
-    <div class="col-xs-6 col-sm-6">
+    <div class="col-md-6">
       <img src="{{news_item.article_image.url}}" width="100px" class="img-responsive" alt="Image">
     </div>
 
@@ -40,3 +40,6 @@
   </div>
 </div>
   {% endblock %}
+  {% block scripts %} {{block.super}}
+  <script type="text/javascript" src="{%static 'js/newsletter.js'%}"></script>
+ {% endblock %}
